@@ -16,6 +16,5 @@
 
 - name: Install the basic packages
   ansible.builtin.apt:
-    name: "{{ item }}"
+    name: "{{ common_install }}"
     state: present
-  loop: "{{ common_install }}"
