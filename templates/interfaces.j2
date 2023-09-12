@@ -1,0 +1,12 @@
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug {{ common_interface }}
+
+iface {{ common_interface }} inet static
+        address {{ common_ip }}
+        gateway {{ common_gateway }}

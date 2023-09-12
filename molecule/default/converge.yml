@@ -1,0 +1,17 @@
+---
+- name: Converge
+  hosts: molecule
+  gather_facts: false
+  vars:
+    common_hostname: testhost
+    common_interface: enp3s1
+    common_ip: 1.2.3.4
+    common_gateway: 3.4.5.6
+    common_install:
+      - sudo
+      - python3
+  tasks:
+    - name: Check the role
+      ansible.builtin.include_role:
+        name: common
+        tasks_from: main.yml

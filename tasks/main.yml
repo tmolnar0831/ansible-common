@@ -1,0 +1,21 @@
+---
+# tasks file for common
+
+- name: Set the hostname
+  ansible.builtin.hostname:
+    name: "{{ common_hostname }}"
+
+- name: Set the network interface
+  ansible.builtin.template:
+    src: interfaces.j2
+    dest: /etc/network/interfaces
+    owner: root
+    group: root
+    mode: "0644"
+    backup: true
+
+- name: Install the basic packages
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ common_install }}"
